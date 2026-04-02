@@ -1,0 +1,798 @@
+/* ============================================
+   RESET & BASE
+   ============================================ */
+
+   * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  /*
+    box-sizing: border-box — makes padding and border included
+    in an element's total width/height so layouts don't break.
+    margin/padding: 0 — removes all default browser spacing so
+    you start from a clean, consistent baseline.
+  */
+  
+  body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    background-color: #f5f5f5;
+    color: #2c2c2c;
+  }
+  /*
+    font-family — sets the typeface with fallbacks in case
+    Helvetica isn't available.
+    font-size: 16px — a comfortable default reading size.
+    line-height: 1.6 — adds vertical breathing room between
+    lines of text for readability.
+    background/color — light grey background with dark text
+    for good contrast.
+  */
+  
+  img {
+    max-width: 100%;
+    display: block;
+  }
+  /*
+    max-width: 100% — prevents images from overflowing their
+    container; they'll shrink to fit.
+    display: block — removes the small gap that appears below
+    inline images by default.
+  */
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  /*
+    Removes underlines from links and makes them inherit
+    the text color of their parent element, so you can
+    style links intentionally rather than using browser defaults.
+  */
+  
+  ul {
+    list-style: none;
+  }
+  /*
+    Removes bullet points from all unordered lists
+    since the nav and address lists don't need them.
+  */
+  
+  .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  /*
+    width: 90% — content takes up 90% of the viewport so
+    there's a small gutter on each side.
+    max-width: 1200px — prevents the layout from stretching
+    too wide on large monitors.
+    margin: 0 auto — centers the container horizontally.
+  */
+  
+  /* ============================================
+     HEADER & NAVIGATION
+     ============================================ */
+  
+  header {
+    background-color: #1b5e20;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  /*
+    background-color — a deep cricket-green for the header.
+    padding — vertical spacing inside the header bar.
+    position: sticky + top: 0 — the header sticks to the
+    top of the viewport as you scroll.
+    z-index: 100 — ensures the header sits on top of all
+    other content when scrolling.
+  */
+  
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  /*
+    display: flex — lays the logo and nav out horizontally.
+    justify-content: space-between — pushes the logo to the
+    left and the nav links to the right.
+    align-items: center — vertically centers them.
+    flex-wrap: wrap — allows items to wrap to a new line on
+    smaller screens instead of overflowing.
+    gap — adds space between items when they wrap.
+  */
+  
+  .logo {
+    color: #ffffff;
+    font-size: 1.4rem;
+  }
+  /*
+    White text on the green header, slightly larger than
+    body text to stand out as a brand name.
+  */
+  
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+  /*
+    display: flex — lays the nav <li> items out in a
+    horizontal row.
+    gap: 1.5rem — adds consistent spacing between each link.
+  */
+  
+  .nav-links li a {
+    color: #e8f5e9;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+  }
+  /*
+    Light green link color that fits the green header.
+    font-weight: 500 — slightly bolder than normal for
+    emphasis.
+    transition — makes the color change animate smoothly
+    on hover instead of snapping instantly.
+  */
+  
+  .nav-links li a:hover {
+    color: #ffffff;
+  }
+  /*
+    On hover, the link brightens to pure white to give
+    visual feedback that it's clickable.
+  */
+  
+  /* ============================================
+     HERO / HOME SECTION
+     ============================================ */
+  
+  .home-page {
+    background-image: linear-gradient(rgba(26, 39, 25, 0.65), rgba(26, 39, 25, 0.65)), url('great-view.jpg');
+    padding: 6rem 0 5rem;
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+    color: #ffffff;
+  }
+  /*
+    linear-gradient — a diagonal gradient going from dark
+    green to lighter green, giving the hero visual depth.
+    color: white — all text in this section is white.
+    padding — large top/bottom spacing so the hero feels
+    spacious and prominent.
+    text-align: center — centers all text content.
+  */
+  
+  .home-content {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  /*
+    Constrains the text to a narrower width so lines
+    don't stretch too wide. Centered with auto margins.
+  */
+  
+  .kicker {
+    font-size: 0.85rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    opacity: 0.85;
+  }
+  /*
+    Small, uppercase, widely-spaced text that acts as a
+    "kicker" label above the main heading.
+    opacity: 0.85 — slightly transparent so it doesn't
+    compete with the heading below it.
+  */
+  
+  .home-content h2 {
+    font-size: 2.8rem;
+    line-height: 1.2;
+    margin-bottom: 1.25rem;
+  }
+  /*
+    Large, bold heading. Tight line-height keeps multi-line
+    headings compact. Margin pushes the paragraph below down.
+  */
+  
+  .home-content p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+  }
+  /*
+    Slightly larger paragraph text for the hero blurb.
+    Slightly transparent to let the heading dominate.
+  */
+  
+  .btn {
+    display: inline-block;
+    padding: 0.85rem 2rem;
+    background-color: #ffffff;
+    color: #1b5e20;
+    font-weight: 700;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  /*
+    inline-block — allows padding/margin on the link while
+    keeping it inline.
+    White background with green text — high contrast on the
+    green hero.
+    border-radius: 4px — subtle rounded corners.
+    transition — smooth animation on hover for bg color
+    and a slight scale-up.
+  */
+  
+  .btn:hover {
+    background-color: #e8f5e9;
+    transform: translateY(-2px);
+  }
+  /*
+    On hover, the button tints slightly green and lifts
+    up by 2px, giving a satisfying interactive feel.
+  */
+  
+  /* ============================================
+     ABOUT SECTION
+     ============================================ */
+  
+  .about-section {
+    padding: 5rem 0;
+    background-color: #ffffff;
+  }
+  /*
+    Generous vertical padding to separate from neighboring
+    sections. White background to contrast the grey body.
+  */
+  
+  .about-flexbox {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+  }
+  /*
+    Flex lays the text and image side-by-side.
+    align-items: center — vertically centers them relative
+    to each other.
+    gap: 3rem — space between the text block and image.
+  */
+  
+  .about-content {
+    flex: 1;
+  }
+  /*
+    flex: 1 — the text takes up all available space that
+    the image doesn't claim.
+  */
+  
+  .about-content h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #1b5e20;
+  }
+  /*
+    Section heading in the brand green, with margin to
+    push the first paragraph down.
+  */
+  
+  .about-content p {
+    margin-bottom: 1rem;
+    color: #555;
+  }
+  /*
+    Space between paragraphs. Slightly lighter text color
+    than the heading so there's a visual hierarchy.
+  */
+  
+  .about-image-flex {
+    flex: 1;
+  }
+  /*
+    The image container takes up equal space as the text,
+    creating a balanced 50/50 split.
+  */
+  
+  .image-about {
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+  /*
+    border-radius — rounds the image corners slightly.
+    box-shadow — adds a soft shadow underneath the image
+    so it appears slightly lifted off the page.
+  */
+  
+  /* ============================================
+     GROUNDS SECTION
+     ============================================ */
+  
+  .grounds-section {
+    padding: 5rem 0;
+    background-color: #f5f5f5;
+  }
+  /*
+    Same grey as the body, visually separating it from the
+    white about section above.
+  */
+  
+  .grounds-intro {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  /*
+    Centers the heading and subtext. Large bottom margin
+    pushes the cards down.
+  */
+  
+  .grounds-intro h2 {
+    font-size: 2rem;
+    color: #1b5e20;
+    margin-bottom: 0.5rem;
+  }
+  
+  .grounds-intro p {
+    color: #555;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+  /*
+    Constrains the intro paragraph width so it reads
+    well and stays centered.
+  */
+  
+  /* ============================================
+     SHARED CARD STYLES (Grounds + Learn)
+     ============================================ */
+  
+  .card-section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  /*
+    CSS Grid with 3 equal-width columns — one card per
+    column.
+    gap: 2rem — uniform spacing between every card.
+  */
+  
+  .card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  /*
+    White card on the grey background for contrast.
+    border-radius — rounded corners.
+    overflow: hidden — ensures the card image's corners
+    are clipped to match the card's rounded corners.
+    box-shadow — subtle shadow for a "card" feel.
+    transition — animates the hover effect smoothly.
+  */
+  
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  }
+  /*
+    On hover, the card lifts up and its shadow deepens,
+    giving a 3D interactive effect.
+  */
+  
+  .card-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  /*
+    width: 100% — image fills the full card width.
+    height: 200px — fixed height so all cards are uniform.
+    object-fit: cover — crops the image to fill the area
+    without distortion; acts like background-size: cover.
+  */
+  
+  .card-content {
+    padding: 1.25rem;
+  }
+  /*
+    Adds inner spacing around the card text so it doesn't
+    touch the edges.
+  */
+  
+  .card-content h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #1b5e20;
+  }
+  
+  .card-content p {
+    font-size: 0.95rem;
+    color: #555;
+  }
+  
+  /* ============================================
+     LEARN SECTION
+     ============================================ */
+  
+  .learn {
+    padding: 5rem 0;
+    background-color: #ffffff;
+  }
+  
+  .learn-content {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .learn-content h2 {
+    font-size: 2rem;
+    color: #1b5e20;
+    margin-bottom: 0.5rem;
+  }
+  
+  .learn-content p {
+    color: #555;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+  /*
+    Same pattern as the grounds intro — centered heading
+    with a constrained-width paragraph.
+  */
+  
+  /* ============================================
+     TOURNAMENT TABLE
+     ============================================ */
+  
+ .tournament-table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #ffffff;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+  /*
+    Same width/centering as .container so it aligns with
+    the rest of the page.
+    border-collapse: collapse — removes gaps between table
+    cells so borders merge cleanly.
+    border-radius + overflow: hidden — rounds the table
+    corners (overflow clips the inner cells).
+  */
+  
+  .tournament-table thead {
+    background-color: #1b5e20;
+    color: #ffffff;
+  }
+  /*
+    Green header row with white text to match the brand
+    and clearly distinguish headers from data rows.
+  */
+  
+  .tournament-table th,
+  .tournament-table td {
+    padding: 1rem 1.25rem;
+    text-align: left;
+    font-size: 0.95rem;
+  }
+  /*
+    Generous padding makes each cell easy to read.
+    Left-aligned text is standard for data tables.
+  */
+  
+  .tournament-table tbody tr {
+    border-bottom: 1px solid #e0e0e0;
+  }
+  /*
+    A subtle border between rows makes it easy to follow
+    data across a row.
+  */
+  
+  .tournament-table tbody tr:last-child {
+    border-bottom: none;
+  }
+  /*
+    Removes the border on the last row since the table
+    edge already provides separation.
+  */
+  
+  .tournament-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  /*
+    "Zebra striping" — every other row has a slightly
+    different background so rows are easier to track
+    visually.
+  */
+
+.tournament-section {
+    padding: 5rem 0;
+    background-color: #f5f5f5;
+}
+.tournament-intro {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+.tournament-intro h2 {
+    font-size: 2rem;
+    color: #1b5e20;
+    margin-bottom: 0.5rem;
+}
+.tournament-intro p {
+    color: #555;
+    max-width: 520px;
+    margin: 0 auto;
+}
+  
+  /* ============================================
+     CONTACT SECTION
+     ============================================ */
+  
+  .contact-section {
+    padding: 5rem 0;
+    background-color: #ffffff;
+  }
+  
+  .contact-flexbox {
+    display: flex;
+    gap: 3rem;
+    align-items: flex-start;
+  }
+  /*
+    Side-by-side layout for the form and address box.
+    align-items: flex-start — aligns both to the top
+    rather than stretching them to equal height.
+  */
+  
+  .contact-box {
+    flex: 1;
+  }
+  
+  .contact-box label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.35rem;
+    margin-top: 1rem;
+    color: #333;
+  }
+  /*
+    display: block — forces each label onto its own line
+    above the input.
+    font-weight: 600 — semi-bold to distinguish labels
+    from placeholder text.
+  */
+  
+  .contact-box input,
+  .contact-box textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+  }
+  /*
+    Full-width inputs. Consistent padding and border.
+    font-family: inherit — forces the inputs to use the
+    page font instead of the browser default monospace.
+    transition — animates the focus border change.
+  */
+  
+  .contact-box input:focus,
+  .contact-box textarea:focus {
+    outline: none;
+    border-color: #1b5e20;
+  }
+  /*
+    Removes the default blue outline and replaces it
+    with a green border that matches the brand.
+  */
+  
+  .contact-box button {
+    margin-top: 1.25rem;
+    padding: 0.85rem 2rem;
+    background-color: #1b5e20;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  /*
+    Green CTA button matching the brand. cursor: pointer
+    shows a hand icon on hover. No border for a clean look.
+  */
+  
+  .contact-box button:hover {
+    background-color: #2e7d32;
+  }
+  /*
+    Slightly lighter green on hover to indicate interactivity.
+  */
+  
+  .address-box {
+    flex: 1;
+  }
+  
+  .address-box h3 {
+    font-size: 1.1rem;
+    color: #1b5e20;
+    margin-top: 1.5rem;
+    margin-bottom: 0.35rem;
+  }
+  
+  .address-box h3:first-child {
+    margin-top: 0;
+  }
+  /*
+    Removes the top margin from only the first h3 so
+    the address box aligns flush with the form.
+  */
+  
+  .address-box li {
+    color: #555;
+    padding: 0.2rem 0;
+  }
+  
+  /* ============================================
+     FOOTER
+     ============================================ */
+  
+  footer {
+    background-color: #1b5e20;
+    color: #ffffff;
+    padding: 3rem 0;
+    text-align: center;
+  }
+  /*
+    Deep green footer matching the header for visual
+    consistency. White centered text.
+  */
+  
+  .footer-flexbox {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .footer-content h2 {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .footer-content p {
+    font-size: 0.9rem;
+    opacity: 0.75;
+  }
+  /*
+    The copyright text is slightly transparent so it
+    doesn't compete with the main CTA heading above.
+  */
+  
+  /* ============================================
+     RESPONSIVE — TABLET (768px and below)
+     ============================================ */
+  
+  @media (max-width: 768px) {
+    .home-content h2 {
+      font-size: 2rem;
+    }
+    /*
+      Shrinks the hero heading on tablets so it
+      doesn't dominate the smaller screen.
+    */
+  
+    .about-flexbox {
+      flex-direction: column;
+    }
+    /*
+      Stacks the about text and image vertically
+      instead of side-by-side on narrower screens.
+    */
+  
+    .card-section {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    /*
+      Switches from 3 columns to 2 columns so cards
+      have more room on a tablet-width screen.
+    */
+  
+    .contact-flexbox {
+      flex-direction: column;
+    }
+    /*
+      Stacks the form and address block vertically.
+    */
+  
+    .tournament-table th,
+    .tournament-table td {
+      padding: 0.75rem 0.75rem;
+      font-size: 0.85rem;
+    }
+    /*
+      Reduces table cell padding and text size so the
+      table fits on a tablet screen without scrolling.
+    */
+  }
+  
+  /* ============================================
+     RESPONSIVE — MOBILE (480px and below)
+     ============================================ */
+  
+  @media (max-width: 480px) {
+    .nav {
+      flex-direction: column;
+      text-align: center;
+    }
+    /*
+      Stacks the logo above the nav links vertically
+      and centers everything on small phones.
+    */
+  
+    .nav-links {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+    }
+    /*
+      Allows nav links to wrap across multiple lines
+      and centers them under the logo.
+    */
+  
+    .home-page {
+      padding: 4rem 0 3rem;
+    }
+  
+    .home-content h2 {
+      font-size: 1.6rem;
+    }
+    /*
+      Further reduces hero heading size and section
+      padding for phone screens.
+    */
+  
+    .card-section {
+      grid-template-columns: 1fr;
+    }
+    /*
+      Single column — each card takes the full width
+      on mobile, stacking vertically.
+    */
+  
+    .tournament-table {
+      display: block;
+      overflow-x: auto;
+    }
+    /*
+      display: block + overflow-x: auto — if the table
+      is wider than the screen, the user can scroll
+      horizontally rather than the entire page breaking.
+    */
+  
+    .about-content h2,
+    .grounds-intro h2,
+    .learn-content h2 {
+      font-size: 1.6rem;
+    }
+    /*
+      Scales down all section headings so they don't
+      look oversized on a phone.
+    */
+  }
